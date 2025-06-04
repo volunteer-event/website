@@ -17,7 +17,7 @@ const Footer = () => {
     >
       <Container maxWidth="sm">
         <Typography variant="body1">
-          Your Company Name © {new Date().getFullYear()}
+          Your Company Name © {new Date().getFullYear()} | All rights reserved
         </Typography>
         <Typography variant="body2" color="text.secondary">
           <Link color="inherit" href="https://example.com/">

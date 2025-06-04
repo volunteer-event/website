@@ -19,3 +19,25 @@ html, body {
 .main-content {
   flex: 1;
 }
+
+.log-form {
+  max-width: 400px;
+  margin: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* space between fields */
+}
+
+.form-field {
+  width: 100%;
+}
+
+.register-form {
+  max-width: 400px;
+  margin: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

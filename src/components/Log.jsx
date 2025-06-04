@@ -1,29 +1,50 @@
-
-import {Button, TextField} from '@mui/material'
-
-import React from 'react'
+import React, { useState } from 'react';
+import { Button, TextField, IconButton, InputAdornment, Box, FormControlLabel, Checkbox} from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 
 const Log = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return (
-    <div>
-        
-         <TextField variant="outlined" label="username or phone number"></TextField>
-         <br /><br />
-        <TextField variant="outlined" label="password"></TextField>
-        <br /><br />
-         
-    
-    <Button variant='contained'>
-        submit
-    </Button><br/><br/>
-      
-      <Button variant='outlined'>
-        forgot passsword?
-    </Button>
-    </div>
-  )
-}
+    <Box className="log-form">
+      <TextField
+        variant="outlined"
+        label="Email id"
+        className="form-field"
+      />
 
-export default Log
+      <TextField
+        variant="outlined"
+        label="Password"
+        type={showPassword ? 'text' : 'password'}
+        className="form-field"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton onClick={handleClickShowPassword} edge="end">
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
 
+      <FormControlLabel
+        control={<Checkbox color="primary" />}
+        label="Remember me"
+      />
+
+      <Button variant="contained">
+        Log In
+      </Button>
+
+    </Box>
+  );
+};
+
+export default Log;

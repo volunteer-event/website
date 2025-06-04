@@ -5,7 +5,7 @@ import { Menu as MenuIcon, Adb as AdbIcon } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const pages = ['Sign In', 'Log In', 'Blog'];
+const pages = ['Home', 'About Us', 'Services', 'Contact Us'];
 const settings = ['Profile', 'Logout'];
 
 const NavBar = () => {
@@ -23,7 +23,7 @@ const NavBar = () => {
 
     const routes = {
     Profile: '/profile',
-    Logout: '/login',
+    Logout: '/',
     };
 
     return (
@@ -32,7 +32,7 @@ const NavBar = () => {
             <Toolbar disableGutters>
             {/* LOGO / TITLE */}
             <Link
-            to="/"
+            to="/HomePage"
             style={{
                 textDecoration: 'none',
                 color: 'inherit',
@@ -51,14 +51,17 @@ const NavBar = () => {
             </Link>
 
             <Box sx={{ flexGrow: 1, display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
-                <Link to="/signup" style={{ textDecoration: 'none' }}>
-                    <Button sx={{ color: 'white' }}>Sign Up</Button>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <Button sx={{ color: 'white' }}>Home</Button>
                 </Link>
-                <Link to="/login" style={{ textDecoration: 'none' }}>
-                    <Button sx={{ color: 'white' }}>Log In</Button>
+                <Link to="/about" style={{ textDecoration: 'none' }}>
+                    <Button sx={{ color: 'white' }}>About Us</Button>
                 </Link>
-                <Link to="/blog" style={{ textDecoration: 'none' }}>
-                    <Button sx={{ color: 'white' }}>Blog</Button>
+                <Link to="/services" style={{ textDecoration: 'none' }}>
+                    <Button sx={{ color: 'white' }}>Services</Button>
+                </Link>
+                <Link to="/contact" style={{ textDecoration: 'none' }}>
+                    <Button sx={{ color: 'white' }}>Contact Us</Button>
                 </Link>
             </Box>
 

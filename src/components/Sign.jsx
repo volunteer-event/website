@@ -1,34 +1,65 @@
-
-import {Button, TextField} from '@mui/material'
-
-import React from 'react'
-
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import {Box, Button, IconButton, InputAdornment, TextField} from '@mui/material'
+import React, { useState } from 'react'
 
 const Sign = () => {
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRePassword, setShowRePassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  const toggleRePasswordVisibility = () => {
+    setShowRePassword((prev) => !prev);
+  };
   return (
     <div>
         
-      <TextField variant="outlined" label="name"></TextField>
-      <br/><br/>   
-      <TextField variant="outlined" label="DOB"></TextField>
-      <br/><br/>
-      <TextField variant="outlined" label="phone number"></TextField>
-         <br /><br />
-        <TextField variant="outlined" label="username"></TextField>
-        <br /><br />
-      
-         <TextField variant="outlined" label="create password"></TextField>
-      <br/><br/>
-      <TextField variant="outlined" label="re enter password"></TextField>
-      <br/><br/>
-      <TextField variant="outlined" label="email"></TextField>
-      <br/><br/>
-      
-         
-    
-    <Button variant='contained'>
-        create account
-    </Button>
+      <Box className="register-form">
+      <TextField variant="outlined" label="Name" className="form-field" />
+
+      <TextField variant="outlined" label="Phone Number" className="form-field" />
+
+      <TextField variant="outlined" label="Email" className="form-field" />
+
+      <TextField
+        variant="outlined"
+        label="Create Password"
+        className="form-field"
+        type={showPassword ? 'text' : 'password'}
+        InputProps = {{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton onClick={togglePasswordVisibility} edge="end">
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
+
+      <TextField
+        variant="outlined"
+        label="Re Enter Password"
+        className="form-field"
+        type={showRePassword ? 'text' : 'password'}
+        InputProps = {{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton onClick={toggleRePasswordVisibility} edge="end">
+                {showRePassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
+
+      <Button variant="contained">
+        Create Account
+      </Button>
+    </Box>
       
       
     </div>
