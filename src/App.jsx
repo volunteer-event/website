@@ -6,6 +6,7 @@ import Sign from './components/Sign';
 import HomePage from './components/HomePage';
 import { Route, Routes } from 'react-router-dom'
 import AboutUs from './components/AboutUs';
+import ContactUs from './components/ContactUs';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signup" element={<Sign/>}/>
           <Route path="/login" element={<Log/>}/>
           <Route path="/about" element={<AboutUs/>}/>
+          <Route path="/contact" element={<ContactUs/>}/>
         </Routes>
       </main>
       <Footer />
