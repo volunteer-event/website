@@ -32,7 +32,7 @@ const NavBar = () => {
             <Toolbar disableGutters>
             {/* LOGO / TITLE */}
             <Link
-            to="/HomePage"
+            to="/"
             style={{
                 textDecoration: 'none',
                 color: 'inherit',
