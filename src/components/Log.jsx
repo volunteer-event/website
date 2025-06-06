@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, TextField, IconButton, InputAdornment, Box, FormControlLabel, Checkbox} from '@mui/material';
+import { Button, TextField, IconButton, InputAdornment, Box, FormControlLabel, Checkbox, Link, Typography} from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 
@@ -42,7 +42,14 @@ const Log = () => {
       <Button variant="contained">
         Log In
       </Button>
-
+      
+      <Typography
+        variant='h6'>
+        Do not have an account?
+        <Link href="signup" underline="always">
+            Register
+        </Link> 
+      </Typography>
     </Box>
   );
 };
