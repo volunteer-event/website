@@ -17,7 +17,7 @@ const AboutUs = () => {
         </Typography>
         <br/>
 
-        <Card sx={{ maxWidth: 800, margin: 'auto', marginTop: 4, padding: 2 }}>
+        <Card sx={{ maxWidth: 800, margin: 'auto', border: '2px solid cadetblue', marginTop: 4, padding: 2 }}>
           <CardContent>
             <Typography
                 variant='h5' 
@@ -44,7 +44,7 @@ const AboutUs = () => {
         </Card>
 
 
-        <Card sx={{ maxWidth: 800, margin: 'auto', marginTop: 4, padding: 2 }}>
+        <Card sx={{ maxWidth: 800, margin: 'auto', border: '2px solid cadetblue', marginTop: 4, padding: 2 }}>
             <CardContent>
                 <Typography
                     variant="h5"
@@ -78,7 +78,7 @@ const AboutUs = () => {
           </CardContent>
         </Card>
 
-        <Card sx={{ maxWidth: 800, margin: 'auto', marginTop: 4, padding: 2 }}>
+        <Card sx={{ maxWidth: 800, margin: 'auto', border: '2px solid cadetblue', marginTop: 4, padding: 2 }}>
           <CardContent>
             <Typography
                 variant='h5' 
@@ -103,7 +103,7 @@ const AboutUs = () => {
         </Card>
 
 
-        <Card sx={{ maxWidth: 800, margin: 'auto', marginTop: 4, padding: 2 }}>
+        <Card sx={{ maxWidth: 800, margin: 'auto', border: '2px solid cadetblue', marginTop: 4, padding: 2 }}>
           <CardContent>
             <Typography
                 variant='h5' 
