@@ -17,11 +17,11 @@ const Footer = () => {
     >
       <Container maxWidth="sm">
         <Typography variant="body1">
-          Your Company Name © {new Date().getFullYear()} | All rights reserved
+          company_name © 2025 | All rights reserved
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <Link color="inherit" href="https://example.com/">
-            example.com
+          <Link color="inherit" href="http://localhost:5173/">
+            theurl.com
           </Link>
         </Typography>
       </Container>

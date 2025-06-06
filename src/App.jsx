@@ -1,13 +1,12 @@
 import './App.css'
+import { Route, Routes } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Log from './components/Log';
 import Sign from './components/Sign';
 import HomePage from './components/HomePage';
-import { Route, Routes } from 'react-router-dom'
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
-
 
 function App() {
   return (
