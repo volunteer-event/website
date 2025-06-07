@@ -5,6 +5,7 @@ import Log from './components/Log';
 import Sign from './components/Sign';
 import HomePage from './components/HomePage';
 import { Route, Routes } from 'react-router-dom'
+import EventReg from './components/EventReg';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path="/signup" element={<Sign/>}/>
           <Route path="/login" element={<Log/>}/>
-
+          <Route path="/eventreg" element={<EventReg/>}/>
         </Routes>
       </main>
       <Footer />
