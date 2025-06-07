@@ -41,9 +41,9 @@ const HomePage = () => {
       <Typography 
         variant='h6'
         sx={{ flexGrow: 1,textAlign:'left' }} >
-        "Bring your cause to life —
+          Bring your cause to life —
           <Link href="eventreg" underline="always">
-            register your event and connect with passionate volunteers today."
+            register your event and connect with passionate volunteers today.
           </Link>
 
       </Typography>
@@ -54,7 +54,7 @@ const HomePage = () => {
           Whether you're hosting or helping — join the movement. Sign up as an organiser or volunteer today!
       </Typography>
       
-      <Link href="login" underline="always">
+      <Link href="login" underline="always" sx={{ fontSize: '1.5rem' }}>
             Log in
       </Link>
     </div>

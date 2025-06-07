@@ -1,12 +1,13 @@
 import './App.css'
+import { Route, Routes } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Log from './components/Log';
 import Sign from './components/Sign';
 import HomePage from './components/HomePage';
-import { Route, Routes } from 'react-router-dom'
 import EventReg from './components/EventReg';
-
+import AboutUs from './components/AboutUs';
+import ContactUs from './components/ContactUs';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           <Route path="/signup" element={<Sign/>}/>
           <Route path="/login" element={<Log/>}/>
           <Route path="/eventreg" element={<EventReg/>}/>
+          <Route path="/about" element={<AboutUs/>}/>
+          <Route path="/contact" element={<ContactUs/>}/>
         </Routes>
       </main>
       <Footer />
@@ -26,4 +29,3 @@ function App() {
 }
 
 export default App
-

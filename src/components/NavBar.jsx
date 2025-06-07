@@ -1,9 +1,7 @@
 import React from 'react'
 import { AppBar, Box, Toolbar, IconButton, Typography, Container } from '@mui/material';
 import { Avatar, Button, Tooltip, Menu, MenuItem } from '@mui/material';
-import { Menu as MenuIcon, Adb as AdbIcon } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
-
 
 const pages = ['Home', 'About Us', 'Services', 'Contact Us'];
 const settings = ['Profile', 'Logout'];
@@ -32,7 +30,7 @@ const NavBar = () => {
             <Toolbar disableGutters>
             {/* LOGO / TITLE */}
             <Link
-            to="/HomePage"
+            to="/"
             style={{
                 textDecoration: 'none',
                 color: 'inherit',
