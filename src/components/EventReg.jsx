@@ -32,7 +32,7 @@ const EventReg = () => {
           align='center'
           gutterBottom
           sx={{ fontWeight: 500, fontFamily: 'Arial' }}
-      >
+       >
           Provide Event Details
       </Typography>
       <Typography
