@@ -3,59 +3,45 @@ import React from 'react'
 
 const EventReg = () => {
         const categories = [
-                {
-                        value: 'Social',
-                        label: 'Social',
-                },
-                {
-                        value: 'Technical',
-                        label: 'Technical',
-                },
-                {
-                        value: 'Cultural',
-                        label: 'Cultural',
-                },
-                {
-                        value: 'Sports',
-                        label: 'Sports',
-                },
+                {value: 'Social',label: 'Social',},
+                {value: 'Technical',label: 'Technical',},
+                {value: 'Cultural',label: 'Cultural',},
+                {value: 'Sports',label: 'Sports',},
         ];
         const mode = [
-                {
-                        value : 'Online',
-                        label : 'Online',
-                },
-                {
-                        value : 'Offline',
-                        label : 'Offline',
-                },
-                {
-                        value : 'Hybrid',
-                        label : 'Hybrid',
-                },
+                {value : 'Online',label : 'Online',},
+                {value : 'Offline',label : 'Offline',},
+                {value : 'Hybrid',label : 'Hybrid',},
         ];
   return (
     <div>
+    <Box
+      sx={{
+        maxWidth: '1000px',
+        mx: 'auto',
+        my: 4,
+        px: 3,
+        py: 4,
+        bgcolor: '#f9f9f9',
+        borderRadius: 4,
+        boxShadow: 3,
+      }}
+    >
     <Typography
-          variant='h2' 
-          sx={{ flexGrow: 1,textAlign:'center' }} 
-          style={{
-            fontFamily:'aerial',
-            fontWeight:400,
-          }}>
-          Event-Volunteer Management
-      </Typography><br /><br />
+          variant='h3' 
+          align='center'
+          gutterBottom
+          sx={{ fontWeight: 500, fontFamily: 'Arial' }}
+      >
+          Provide Event Details
+      </Typography>
       <Typography
           variant='h6' 
-          sx={{ flexGrow: 1,textAlign:'left' }} 
-          style={{
-             fontFamily: 'aerial',
-             fontWeight: 400,
-             color: '#333',
-          }}>
+          sx={{ mt: 4, mb: 2, fontWeight: 500 }} 
+          >
           Event Details:
         </Typography>
-        <br />
+        
     <Box
         component="form"
         sx={{
@@ -72,7 +58,7 @@ const EventReg = () => {
                 id="filled-required"
                 label="Organisor Contact Info"
                 placeholder="email or phone"
-                sx={{ flex: '1 1 20%' }}
+                sx={{ flex: '1 1 30%' }}
                 variant="filled"/>
            
             <TextField
@@ -94,8 +80,8 @@ const EventReg = () => {
                 id="filled-required"
                 label="Event Description"
                 placeholder="max 25 words"
-                multiline
-                variant="filled"/>
+                multiline variant="filled"
+                sx={{ flex: '1 1 100%' }}/>
            
 
             <TextField
@@ -136,27 +122,19 @@ const EventReg = () => {
                     sx={{ width: '300px' }}
                     variant="filled"/>
        </Box>
-        <br/>
+       
      <Typography
                 variant='h6' 
-                sx={{ flexGrow: 1,textAlign:'left' }} 
-                style={{
-                fontFamily: 'aerial',
-                fontWeight: 400,
-                color: '#333',
-                }}>
+                sx={{ mt: 4, mb: 2, fontWeight: 500 }}>
                 Date & Time:
             </Typography>
             <br />
         <Box
-                component="form"
                 sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 gap: 2,
-                }}
-                noValidate
-                autoComplete="off" >
+                }} >
             
             
             
@@ -191,28 +169,20 @@ const EventReg = () => {
                 }}
                 variant='filled'/>
         </Box>
-        <br/>
+        
         <Typography
                 variant='h6' 
-                sx={{ flexGrow: 1,textAlign:'left' }} 
-                style={{
-                fontFamily: 'aerial',
-                fontWeight: 400,
-                color: '#333',
-                }}>
+                sx={{ mt: 4, mb: 2, fontWeight: 500 }}>
                 Volunteer/Participant Information:
             </Typography>
-            <br />
+          
         
         <Box
-                component="form"
                 sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 gap: 2,
-                }}
-                noValidate
-                autoComplete="off">
+                }}>
 
                 <TextField
                         required
@@ -235,30 +205,21 @@ const EventReg = () => {
                         id="filled-required"
                         label="Volunteer Qualifications"
                         sx={{width:'300px'}}
-                        multiline
-                        variant="filled"/>
+                        multiline variant="filled"/>
         </Box>
-        <br/>
+       
         <Typography
                 variant='h6' 
-                sx={{ flexGrow: 1,textAlign:'left' }} 
-                style={{
-                fontFamily: 'aerial',
-                fontWeight: 400,
-                color: '#333',
-                }}>
+                sx={{ mt: 4, mb: 2, fontWeight: 500 }}>
                 Other Info:
             </Typography>
             <br />
         <Box
-                component="form"
                 sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 gap: 2,
-                }}
-                noValidate
-                autoComplete="off" >
+                }} >
 
                 <TextField
                         required
@@ -274,16 +235,16 @@ const EventReg = () => {
                         id="filled-textarea"
                         label="Aditional Information"
                         sx={{width:'300px'}}
-                        multiline
-                        variant="filled"/>
+                        multiline variant="filled"/>
 
         </Box>
        
-     <br /><br />
-            <Button variant="contained">
+        <Box sx={{ mt:5,textAlign: 'center'}}>
+            <Button variant="contained" color='primary' size='large'>
                     Register Event
             </Button>
-
+        </Box>
+        </Box>
   
     </div>
   )
