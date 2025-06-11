@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import EventReg from './components/EventReg';
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
+import VolReg from './components/VolReg';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/eventreg" element={<EventReg/>}/>
           <Route path="/about" element={<AboutUs/>}/>
           <Route path="/contact" element={<ContactUs/>}/>
+          <Route path="/volreg" element={<VolReg/>}/>
+
         </Routes>
       </main>
       <Footer />
