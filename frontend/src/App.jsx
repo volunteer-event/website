@@ -9,11 +9,18 @@ import EventReg from './components/EventReg';
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
 import VolReg from './components/VolReg';
+import Events from './components/Events';
 
 function App() {
   return (
+
+    
     <div className="app-container">
+      
+      
       <NavBar />
+      <Events/>
+      {/*
       <main className="main-content">
         <Routes>
           <Route path="/" element={<HomePage/>}/>
@@ -26,7 +33,9 @@ function App() {
 
         </Routes>
       </main>
+      */}
       <Footer />
+      
     </div>
   );
 }
