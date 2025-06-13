@@ -19,8 +19,7 @@ function App() {
       
       
       <NavBar />
-      <Events/>
-      {/*
+
       <main className="main-content">
         <Routes>
           <Route path="/" element={<HomePage/>}/>
@@ -30,14 +29,16 @@ function App() {
           <Route path="/about" element={<AboutUs/>}/>
           <Route path="/contact" element={<ContactUs/>}/>
           <Route path="/volreg" element={<VolReg/>}/>
+          {/*
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/my" element={<MyEvents/>}/>
           <Route path="/ve" element={<VEvents/>}/>
-
+          */}
+          <Route path="/registeration" element={<VolReg/>}/>
+          <Route path="/events" element={<Events/>}/>
 
         </Routes>
       </main>
-      */}
       <Footer />
       
     </div>
