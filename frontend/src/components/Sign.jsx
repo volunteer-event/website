@@ -2,11 +2,14 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import {Box, Button, IconButton, InputAdornment, TextField} from '@mui/material'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Sign = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showRePassword, setShowRePassword] = useState(false);
+
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
@@ -47,6 +50,7 @@ const Sign = () => {
     .post("http://localhost:3000",input)
     .then((res) => {
       console.log("data added");
+      navigate('/login');
     })
     .catch((err) => {
       console.log(err);

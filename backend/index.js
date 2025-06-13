@@ -16,6 +16,25 @@ app.post( '/',async(req,res) => {
     }
 });
 
+app.post('/login', async (req, res) => {
+  const { Email, Password } = req.body;
+
+  try {
+    const user = await profiles.findOne({ Email });
+    if (!user) {
+      return res.status(401).send("User not found");
+    }
+    if (user.Password !== Password) {
+      return res.status(401).send("Incorrect password");
+    }
+
+    res.send({ message: "Login successful", userId: user._id });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+});
+
 
 app.listen(port,()=>{
     console.log(`server is running on port ${port}`);
