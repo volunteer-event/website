@@ -1,5 +1,6 @@
 import { Box, Button, MenuItem, TextField, Typography } from '@mui/material'
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 const EventReg = () => {
         const categories = [
@@ -13,6 +14,50 @@ const EventReg = () => {
                 {value : 'Offline',label : 'Offline',},
                 {value : 'Hybrid',label : 'Hybrid',},
         ];
+
+        var[input,setInput] = useState({
+            ContactInfo:"",
+            EventName:"",
+            OrganisorName:"",
+            EventDescription:"",
+            Category:"",
+            Mode:"",
+            HostingCity:"",
+            StartDateTime:"",
+            EndDateTime:"",
+            Deadline:"",
+            MaxVolunteer:"",
+            MaxParticipant:"",
+            VolunteerQualification:"",
+            Poster:"",
+            AdditionalInfo:""
+        });
+
+        const inputHandler = (e) => {
+            setInput({...input,[e.target.name]:e.target.value});
+            
+        };
+
+        const fileHandler = (e) => {
+            setInput({ ...input, Poster: e.target.files[0] });
+        };
+
+
+        useEffect(() => {
+            console.log(input);
+        }, [input]);
+
+        const regHandler = () => {
+            console.log("button clicked");
+            axios
+            .post("http://localhost:3000/reg",input)
+            .then((res) => {
+                console.log("data added");
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+        }
   return (
     <div>
     <Box
@@ -58,6 +103,9 @@ const EventReg = () => {
                 id="filled-required"
                 label="Organisor Contact Info"
                 placeholder="email or phone"
+                onChange={inputHandler}
+                name='ContactInfo'
+                value={input.ContactInfo}
                 sx={{ flex: '1 1 30%' }}
                 variant="filled"/>
            
@@ -65,6 +113,9 @@ const EventReg = () => {
                     required
                     id="filled-required"
                     label="Event Name"
+                    onChange={inputHandler}
+                    name='EventName'
+                    value={input.EventName}
                     sx={{ flex: '1 1 30%' }}
                     variant="filled"/> 
 
@@ -72,6 +123,9 @@ const EventReg = () => {
                     required
                     id="filled-required"
                     label=" Organisor Name"
+                    onChange={inputHandler}
+                    name='OrganisorName'
+                    value={input.OrganisorName}
                     sx={{ flex: '1 1 30%' }}
                     variant="filled"/>
 
@@ -80,6 +134,9 @@ const EventReg = () => {
                 id="filled-required"
                 label="Event Description"
                 placeholder="max 25 words"
+                onChange={inputHandler}
+                name='EventDescription'
+                value={input.EventDescription}
                 multiline variant="filled"
                 sx={{ flex: '1 1 100%' }}/>
            
@@ -89,6 +146,9 @@ const EventReg = () => {
                 id="filled-required"
                 select
                 label="Category"
+                onChange={inputHandler}
+                name='Category'
+                value={input.Category}
                 size='small'
                 sx={{ width: '200px' }}
                 variant="filled">
@@ -104,6 +164,9 @@ const EventReg = () => {
                 id="filled-required"
                 select
                 label="Mode"
+                onChange={inputHandler}
+                name='Mode'
+                value={input.Mode}
                 size='small'
                 sx={{ width: '200px' }}
                 variant="filled">
@@ -118,6 +181,9 @@ const EventReg = () => {
                     required
                     id="filled-required"
                     label="Event Hosting City(if offline)"
+                    onChange={inputHandler}
+                    name='HostingCity'
+                    value={input.HostingCity}
                     size='small'
                     sx={{ width: '300px' }}
                     variant="filled"/>
@@ -143,6 +209,9 @@ const EventReg = () => {
                 required
                 id="filled-required"
                 label="Start Date & Time"
+                onChange={inputHandler}
+                name='StartDateTime'
+                value={input.StartDateTime}
                 type="datetime-local"
                 InputLabelProps={{
                 shrink: true, 
@@ -153,6 +222,9 @@ const EventReg = () => {
                 required
                 id="filled-required"
                 label="End Date & Time"
+                onChange={inputHandler}
+                name='EndDateTime'
+                value={input.EndDateTime}
                 type="datetime-local"
                 InputLabelProps={{
                 shrink: true, 
@@ -163,6 +235,9 @@ const EventReg = () => {
                 required
                 id="filled-required"
                 label="Deadline for volunteer reg"
+                onChange={inputHandler}
+                name='Deadline'
+                value={input.Deadline}
                 type="datetime-local"
                 InputLabelProps={{
                 shrink: true, 
@@ -188,6 +263,9 @@ const EventReg = () => {
                         required
                         id="filled-required"
                         label="Max Number of Volunteers"
+                        onChange={inputHandler}
+                        name='MaxVolunteer'
+                        value={input.MaxVolunteer}
                         sx={{width:'300px'}}
                         type="number"
                         variant='filled'/>
@@ -196,6 +274,9 @@ const EventReg = () => {
                         required
                         id="filled-required"
                         label="Max Number of participants"
+                        onChange={inputHandler}
+                        name='MaxParticipant'
+                        value={input.MaxParticipant}
                         type="number"
                         sx={{width:'300px'}}
                         variant='filled'/>
@@ -204,6 +285,9 @@ const EventReg = () => {
                         required
                         id="filled-required"
                         label="Volunteer Qualifications"
+                        onChange={inputHandler}
+                        name='VolunteerQualification'
+                        value={input.VolunteerQualification}
                         sx={{width:'300px'}}
                         multiline variant="filled"/>
         </Box>
@@ -226,6 +310,9 @@ const EventReg = () => {
                         id='filled-required'
                         type="file"
                         label="Upload Event Poster"
+                        onChange={fileHandler}
+                        name='Poster'
+                        
                         sx={{width: '300px'}}
                         variant='filled'
                         InputLabelProps={{ shrink: true }}
@@ -234,13 +321,16 @@ const EventReg = () => {
                 <TextField
                         id="filled-textarea"
                         label="Aditional Information"
+                        onChange={inputHandler}
+                        name='AdditionalInfo'
+                        value={input.AdditionalInfo}
                         sx={{width:'300px'}}
                         multiline variant="filled"/>
 
         </Box>
        
         <Box sx={{ mt:5,textAlign: 'center'}}>
-            <Button variant="contained" color='primary' size='large'>
+            <Button variant="contained" color='primary' size='large' onClick={regHandler}>
                     Register Event
             </Button>
         </Box>

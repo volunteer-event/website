@@ -1,4 +1,4 @@
-const { Password } = require('@mui/icons-material');
+
 var mongoose = require('mongoose');
 var peopleschema = mongoose.Schema({
         Name:String,
