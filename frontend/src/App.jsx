@@ -30,6 +30,10 @@ function App() {
           <Route path="/about" element={<AboutUs/>}/>
           <Route path="/contact" element={<ContactUs/>}/>
           <Route path="/volreg" element={<VolReg/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/my" element={<MyEvents/>}/>
+          <Route path="/ve" element={<VEvents/>}/>
+
 
         </Routes>
       </main>
