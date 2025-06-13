@@ -12,46 +12,31 @@ import { Link } from 'react-router-dom';
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
-})(({ theme }) => ({
+})(({ theme, expand }) => ({
   marginLeft: 'auto',
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
   transition: theme.transitions.create('transform', {
     duration: theme.transitions.duration.shortest,
   }),
-  variants: [
-    {
-      props: ({ expand }) => !expand,
-      style: {
-        transform: 'rotate(0deg)',
-      },
-    },
-    {
-      props: ({ expand }) => !!expand,
-      style: {
-        transform: 'rotate(180deg)',
-      },
-    },
-  ],
 }));
 
 const Events = () => {
     
-  const [expanded, setExpanded] = React.useState(false);
+  const [expandedCardIndex, setExpandedCardIndex] = useState(null);
+  const [events, setEvents] = useState([]);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  useEffect(() => {
+    axios
+      .get('https://dummyjson.com/products')
+      .then((res) => {
+        setEvents(res.data.products);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleExpandClick = (index) => {
+    setExpandedCardIndex((prevIndex) => (prevIndex === index ? null : index));
   };
-
-
-  var [events,setEvents] = useState([]);
-    useEffect(() => {
-            axios
-            .get('https://dummyjson.com/products')
-            .then((res) => {
-                console.log(res.data);
-                setEvents(res.data.products);
-            })
-            .catch((err) => console.log(err));
-        }, [])
 
     return (
         <div>
@@ -59,7 +44,7 @@ const Events = () => {
             <Grid container spacing ={2}>
                 {
                     events.map((val, i) => (
-                    <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+                    <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={val.id || i}>
                         <Card>
                         <CardHeader
                             avatar={<Avatar 
@@ -82,19 +67,17 @@ const Events = () => {
                             </Button>
                           </Link>
                             <ExpandMore
-                              expand={expanded}
-                              onClick={handleExpandClick}
-                              aria-expanded={expanded}
+                              expand={expandedCardIndex === i}
+                              onClick={() => handleExpandClick(i)}
+                              aria-expanded={expandedCardIndex === i}
                               aria-label="show more"
                             >
                               <ExpandMoreIcon />
                             </ExpandMore>
-                            <Collapse in={expanded} timeout="auto" unmountOnExit>
+                            <Collapse in={expandedCardIndex === i} timeout="auto" unmountOnExit>
                               <CardContent>
                                 <Typography sx={{ marginBottom: 2 }}>Event Details:</Typography>
-                                <Typography sx={{ marginBottom: 2 }}>
-                                  {val.description}
-                                </Typography>
+                                <Typography sx={{ marginBottom: 2 }}>{val.description}</Typography>
                                 </CardContent>
                             </Collapse>
                         </CardContent>
