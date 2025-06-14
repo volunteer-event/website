@@ -1,15 +1,18 @@
+import { Button } from '@mui/material'
 import React from 'react'
-function Profile() {
+import { Link } from 'react-router-dom'
+
+const Profile = () => {
   return (
     <div>
       <Button variant='contained'>
-            <Link to={"/my"}>my events</Link>
+            <Link to={"/myevents"}>my events</Link>
       </Button> <br/><br/>
       <Button variant='contained'>
-            <Link to={"/ve"}>volunteered events</Link>
+            <Link to={"/regevents"}>volunteered events</Link>
       </Button>
     </div>
-    )
+  )
 }
 
 export default Profile

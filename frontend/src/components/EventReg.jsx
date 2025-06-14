@@ -38,9 +38,7 @@ const EventReg = () => {
             
         };
 
-        const fileHandler = (e) => {
-            setInput({ ...input, Poster: e.target.files[0] });
-        };
+        
 
 
         useEffect(() => {
@@ -310,7 +308,7 @@ const EventReg = () => {
                         id='filled-required'
                         type="file"
                         label="Upload Event Poster"
-                        onChange={fileHandler}
+                        onChange={inputHandler}
                         name='Poster'
                         
                         sx={{width: '300px'}}
