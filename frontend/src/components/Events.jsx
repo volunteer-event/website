@@ -26,13 +26,10 @@ const Events = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('https://dummyjson.com/products')
-      .then((res) => {
-        setEvents(res.data.products);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  axios.get('http://localhost:3000/events')
+    .then((res) => setEvents(res.data))
+    .catch((err) => console.log(err));
+}, []);
 
   const handleExpandClick = (index) => {
     setExpandedCardIndex((prevIndex) => (prevIndex === index ? null : index));
@@ -50,21 +47,21 @@ const Events = () => {
                             avatar={<Avatar 
                               src="https://img.lovepik.com/png/20231022/simple-design-vector-color-logo-business-mark-colorful-logo_305888_wh1200.png">
                             </Avatar>}
-                            title={val.title}
-                            subheader={`$${val.price}`}
+                            title={val.EventName}
+                            subheader={val.StartDateTime.slice(0,10)}
                         />
                         <CardMedia
                             component="img"
                             height="200"
-                            image={val.thumbnail}
-                            alt={val.title}
+                            image={val.Poster}
+                            alt= "poster"
                             sx={{ objectFit: 'cover'}}
                          />
                         <CardContent>
-                          <Link to="/registeration" style={{ textDecoration: 'none' }}>
-                            <Button variant='contained' startIcon={<PersonAddAlt1Icon/>}>
-                              Register
-                            </Button>
+                          <Link to={`/registeration/${val._id}`} style={{ textDecoration: 'none' }}>
+                          <Button variant='contained' startIcon={<PersonAddAlt1Icon/>}>
+                            Register
+                          </Button>
                           </Link>
                             <ExpandMore
                               expand={expandedCardIndex === i}
@@ -77,7 +74,20 @@ const Events = () => {
                             <Collapse in={expandedCardIndex === i} timeout="auto" unmountOnExit>
                               <CardContent>
                                 <Typography sx={{ marginBottom: 2 }}>Event Details:</Typography>
-                                <Typography sx={{ marginBottom: 2 }}>{val.description}</Typography>
+                                <Typography textAlign= 'left'sx={{ whiteSpace: 'pre-line', mb: 2 }}>
+                                  {`• ContactInfo: ${val.ContactInfo}
+                                  • EventName: ${val.EventName}
+                                  • OrganisorName: ${val.OrganisorName}
+                                  • EventDescription: ${val.EventDescription}
+                                  • Category: ${val.Category}
+                                  • Mode: ${val.Mode}
+                                  • HostingCity: ${val.HostingCity}
+                                  • StartDateTime: ${val.StartDateTime.slice(0, 10)}
+                                  • EndDateTime: ${val.EndDateTime.slice(0,10)}
+                                  • Deadline: ${val.Deadline.slice(0,10)}
+                                  • MaxParticipant: ${val.MaxParticipant}
+                                  • VolunteerQualification: ${val.VolunteerQualification}`}
+                                </Typography>
                                 </CardContent>
                             </Collapse>
                         </CardContent>

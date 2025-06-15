@@ -32,6 +32,7 @@ function App() {
           <Route path="/contact" element={<ContactUs/>}/>
           <Route path="/volreg" element={<VolReg/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/registeration/:eventId" element={<VolReg />} />
           {/*
           
           <Route path="/myevents" element={<MyEvents/>}/>
