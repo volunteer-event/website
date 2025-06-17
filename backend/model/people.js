@@ -5,7 +5,8 @@ var peopleschema = mongoose.Schema({
         PhoneNumber:Number,
         Email:String,
         Password:String,
-        ConfirmedPassword:String
+        Address:String,
+        Gender:String
 });
 
 var peoplemodel = mongoose.model("Profile",peopleschema);

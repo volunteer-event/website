@@ -44,8 +44,34 @@ const Log = () => {
 
 
   return (
+    <div
+          style={{
+          minHeight: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundImage: 'url("/img.png")', 
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}>
     <Box component="form"
     className="log-form"
+    sx={{
+              width: '100%',
+              maxWidth: 400,
+              ml:'auto',
+              mr:8,
+              my:8,
+              px: 4,
+              py: 5,
+              background: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(10px)',
+              borderRadius: 4,
+              boxShadow: 5,
+              color: '#000',
+              border: '1px solid rgba(255, 255, 255, 0.3)',      
+          }}
     onSubmit={handleSubmit}
     noValidate>
       <TextField
@@ -91,6 +117,7 @@ const Log = () => {
           <Link href="signup" underline="always">Register</Link> 
       </Typography>
     </Box>
+    </div>
   );
 };
 
