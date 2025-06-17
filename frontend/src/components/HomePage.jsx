@@ -3,7 +3,14 @@ import React from 'react'
 
 const HomePage = () => {
   return (
-    <div>
+    <div
+      style={{
+          minHeight: '100vh',
+          backgroundImage: 'url("/hm.png")', 
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}>
       <Typography
           variant='h2' 
           sx={{ flexGrow: 1,textAlign:'center' }} 
