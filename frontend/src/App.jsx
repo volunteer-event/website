@@ -11,6 +11,8 @@ import ContactUs from './components/ContactUs';
 import VolReg from './components/VolReg';
 import Events from './components/Events';
 import Profile from './components/Profile';
+import MyEvents from './components/MyEvents';
+import VEvents from './components/VEvents';
 
 
 function App() {
@@ -33,11 +35,8 @@ function App() {
           <Route path="/volreg" element={<VolReg/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/registeration/:eventId" element={<VolReg />} />
-          {/*
-          
-          <Route path="/myevents" element={<MyEvents/>}/>
-          <Route path="/ve" element={<VEvents/>}/>
-          */}
+          <Route path="/MyEvents" element={<MyEvents/>}/>
+          <Route path="/Volunteered-Events" element={<VEvents/>}/>
           <Route path="/registeration" element={<VolReg/>}/>
           <Route path="/events" element={<Events/>}/>
 

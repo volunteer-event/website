@@ -1,24 +1,32 @@
-import { Avatar, Box, Button, Divider, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Avatar, Box, Button, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper,
+         Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Toolbar, Typography } from '@mui/material';
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EditIcon from '@mui/icons-material/Edit';
 import LanguageIcon from '@mui/icons-material/Language';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import GroupsIcon from '@mui/icons-material/Groups';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+const drawerWidth = 240;
 
 
 const Profile = () => {
-  const rows = [
-    { name: 'John Doe', age: 28, email: 'john@example.com' },
-    { name: 'Anna Smith', age: 22, email: 'anna@example.com' },
-    { name: 'Bob Lee', age: 35, email: 'bob@example.com' },
+
+  const items = [
+  { title: 'Account', icon: <AccountCircleIcon />, navigate: "/profile" },
+  { title: 'My Events', icon: <EventNoteIcon />, navigate: "/MyEvents" },
+  { title: 'Volunteered Events', icon: <GroupsIcon />, navigate: "/Volunteered-Events" },
   ];
+  const navigate = useNavigate();
 
   return (
-    <div style={{ paddingLeft: '32px', paddingTop: '16px', paddingBottom: '16px' }}>
+    <div style={{ paddingLeft: '16px', paddingTop: '16px', paddingBottom: '16px' }}>
       <Typography
-        variant="h4"
+        variant="h5"
         textAlign="center"
         sx={{
           fontFamily: '"Fredoka One", cursive',
@@ -33,13 +41,54 @@ const Profile = () => {
       >
         Hello John!!
       </Typography>
-      <Grid container spacing={2} style={{ height: '100vh'}}>
+
+      <Box sx={{ display: 'flex' }}>
+        <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="permanent"
+        anchor="left"
+      >
+        <Toolbar sx={{ bgcolor: 'primary.main' }} >
+          <ListItemButton onClick={() => navigate('/')}></ListItemButton>
+            <img
+              src="https://img.lovepik.com/png/20231022/simple-design-vector-color-logo-business-mark-colorful-logo_305888_wh1200.png"
+              alt="logo"
+              height="40"
+            />
+          <ListItemButton/>
+        </Toolbar >
+        <Divider />
+        <List>
+          {items.map((item, index) => (
+            <ListItem key={item.title} disablePadding>
+              <ListItemButton onClick={() => navigate(item.navigate)}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.title} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+      </Drawer>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+      >
+
+          <Grid container spacing={2}>
           <Grid item xs={4}>
             <Paper
                 style={{
                   aspectRatio: '1 / 1',
                   height: '300px',
-                  background: 'lightblue',
+                  background: '#D5E8EF',
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -62,13 +111,18 @@ const Profile = () => {
             <Paper
                 style={{
                   height: '300px',
-                  aspectRatio: '7/3',
+                  aspectRatio: '6/3',
                   display: 'flex',
+                  background: '#F8F8F8',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   padding: '16px',
                 }}
               >
+                <Typography variant="body1" sx={{fontFamily: '"Fredoka One", cursive'}}>
+                  <strong>ACCOUNT DETAILS</strong>
+                </Typography>
+                <Divider/>
                 <Box
                   sx={{
                     display: 'flex',
@@ -129,8 +183,8 @@ const Profile = () => {
             <Paper
                style={{
                   height: '300px',
-                  aspectRatio: '5/4',
-                  background: "lightblue",
+                  aspectRatio: '7/4',
+                  background: "#D5E8EF",
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
@@ -138,7 +192,10 @@ const Profile = () => {
               
                 }}
               >
-                <Typography variant="h5">Online Profiles</Typography>
+                <Typography sx={{ fontWeight: 'bold', fontFamily: '"Fredoka One", cursive'}}variant="body1">
+                  ONLINE PROFILES
+                </Typography>
+                <Divider/>
                 <Box
                   sx={{
                     display: 'flex',
@@ -196,47 +253,15 @@ const Profile = () => {
           </Grid>
 
           <Grid item xs>
-            <Paper
-                style={{
-                  height: '300px',
-                  
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  padding: '16px',
-                }}
-              >
-                <Typography variant="h6">My Events</Typography>
-                <TableContainer component={Paper}>
-                  <Table>
-                    <TableHead>
-                      <TableRow>
-                        <TableCell><strong>EventName</strong></TableCell>
-                        <TableCell><strong>OrganisorName</strong></TableCell>
-                        <TableCell><strong>StartDate</strong></TableCell>
-                        <TableCell><strong>Update</strong></TableCell>
-                        <TableCell><strong>VolunteerList</strong></TableCell>
-
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {rows.map((row, index) => (
-                        <TableRow key={index}>
-                          <TableCell>{row.name}</TableCell>
-                          <TableCell>{row.age}</TableCell>
-                          <TableCell>{row.email}</TableCell>
-                          <Button variant="contained">update</Button>
-                          <Button variant="contained">view</Button>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Paper>
+            
 
           </Grid>
-
-
       </Grid>
+
+
+      </Box>
+    </Box>
+
     </div>
   )
 }
