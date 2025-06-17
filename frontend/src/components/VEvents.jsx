@@ -1,14 +1,14 @@
+import { Button } from '@mui/material'
 import React from 'react'
-function VEvents() {
+import { Link } from 'react-router-dom'
+
+const VEvents = () => {
   return (
     <div>
-      <Button variant='contained'>
-            <Link to={"/vl"}>volunteers list</Link>
-      </Button>
+      nanni namaskaram!!
     </div>
-    )
+  )
 }
 
 export default VEvents
-
 
