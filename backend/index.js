@@ -27,24 +27,38 @@ app.get('/events', async (req, res) => {
   }
 });
 
+
 app.post('/login', async (req, res) => {
   const { Email, Password } = req.body;
 
   try {
     const user = await profiles.findOne({ Email });
+
     if (!user) {
       return res.status(401).send("User not found");
     }
+
     if (user.Password !== Password) {
       return res.status(401).send("Incorrect password");
     }
 
-    res.send({ message: "Login successful", userId: user._id });
+    res.json({
+      name: user.Name,
+      email: user.Email,
+      phone: user.PhoneNumber,
+      address: user.Address,
+      github: user.GitHub,
+      linkedin: user.LinkedIn,
+      instagram: user.Instagram,
+      website: user.Website
+    });
+
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
   }
 });
+
 
 app.post( '/reg',async(req,res) => {
     try {
@@ -58,25 +72,23 @@ app.post( '/reg',async(req,res) => {
 app.post('/api/events/:eventId', async (req, res) => {
   const { eventId } = req.params;
 
-  
-
   try {
     const event = await events.findById(eventId);
     if (!event) return res.status(404).send("Event not found");
 
     const volunteerData = {
-  FullName: req.body.FullName,
-  Email: req.body.Email,
-  PhoneNumber: req.body.PhoneNumber,
-  Age: req.body.Age,
-  EducationQualification: req.body.EducationQualification,
-  Cause: req.body.Cause,
-  Roles: req.body.Roles,
-  AptForRole: req.body.AptForRole,
-  Skills: req.body.Skills,
-  PriorExperience: Boolean(req.body.PriorExperience),
-  BriefExperience: req.body.BriefExperience
-  };
+      FullName: req.body.FullName,
+      Email: req.body.Email,
+      PhoneNumber: req.body.PhoneNumber,
+      Age: req.body.Age,
+      EducationQualification: req.body.EducationQualification,
+      Cause: req.body.Cause,
+      Roles: req.body.Roles,
+      AptForRole: req.body.AptForRole,
+      Skills: req.body.Skills,
+      PriorExperience: Boolean(req.body.PriorExperience),
+      BriefExperience: req.body.BriefExperience
+      };
 
     console.log("Sending data:", volunteerData);
     event.volunteers.push(volunteerData); // Add volunteer to array
@@ -88,6 +100,39 @@ app.post('/api/events/:eventId', async (req, res) => {
     res.status(500).send("Error adding volunteer");
   }
 });
+
+app.post('/updateProfile', async (req, res) => {
+  try {
+    const { Email, ...updatedFields } = req.body;
+
+    const updatedUser = await profiles.findOneAndUpdate(
+      { Email: Email },
+      { $set: updatedFields },
+      { new: true }
+    );
+
+    if (!updatedUser) return res.status(404).send("User not found");
+
+    res.json({
+      Name: updatedUser.Name,
+      Email: updatedUser.Email,
+      PhoneNumber: updatedUser.PhoneNumber,
+      Address: updatedUser.Address,
+      GitHub: updatedUser.GitHub,
+      LinkedIn: updatedUser.LinkedIn,
+      Instagram: updatedUser.Instagram,
+      Website: updatedUser.Website,
+      Password: updatedUser.Password,
+      Gender: updatedUser.Gender
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
+
 
 
 app.listen(port,()=>{

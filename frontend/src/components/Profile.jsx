@@ -16,12 +16,17 @@ const drawerWidth = 240;
 
 const Profile = () => {
 
+    const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  if (!user) {
+    navigate('/login');
+  }
   const items = [
   { title: 'Account', icon: <AccountCircleIcon />, navigate: "/profile" },
   { title: 'My Events', icon: <EventNoteIcon />, navigate: "/MyEvents" },
   { title: 'Volunteered Events', icon: <GroupsIcon />, navigate: "/Volunteered-Events" },
   ];
-  const navigate = useNavigate();
 
   return (
     <div style={{ paddingLeft: '16px', paddingTop: '16px', paddingBottom: '16px' }}>
@@ -100,14 +105,14 @@ const Profile = () => {
                   alt="user"
                   sx={{ width: 200, height: 200, mt: 2 }}
                 />
-                <Typography variant ="h6">John Doe</Typography>
-                <Typography variant ="h7">example@gmail.com</Typography>
+                <Typography variant ="h6">{user.name}</Typography>
+                <Typography variant ="h7">{user.address}</Typography>
 
 
               </Paper>
           </Grid>
 
-          <Grid item xs>
+          <Grid item xs={4}>
             <Paper
                 style={{
                   height: '300px',
@@ -132,7 +137,7 @@ const Profile = () => {
                   }}
                 >
                   <Box sx={{ fontWeight: 'bold' }}>Full Name</Box>
-                  <Box>John Doe</Box>
+                  <Box>{user.name}</Box>
                 </Box>
                 <Divider />
 
@@ -145,7 +150,7 @@ const Profile = () => {
                   }}
                 >
                   <Box sx={{ fontWeight: 'bold' }}>E-mail</Box>
-                  <Box>example@gmail.com</Box>
+                  <Box>{user.email}</Box>
                 </Box>
                 <Divider />
 
@@ -158,7 +163,7 @@ const Profile = () => {
                   }}
                 >
                   <Box sx={{ fontWeight: 'bold' }}>Phone Number</Box>
-                  <Box>9112233662</Box>
+                  <Box>{user.phone}</Box>
                 </Box>
                 <Divider />
 
@@ -171,11 +176,13 @@ const Profile = () => {
                   }}
                 >
                   <Box sx={{ fontWeight: 'bold' }}>Password</Box>
-                  <Box>xxxxxxxxxxx</Box>
+                  <Box>xxxxxxxxx</Box>
                 </Box>
 
                 <Divider/>
-                <Button variant="contained" size="medium" startIcon={<EditIcon />}>Edit</Button>
+                <Button variant="contained" size="medium" startIcon={<EditIcon />}
+                onClick={() => navigate('/signup', { state: { user } })}>
+                Edit</Button>
               </Paper>
           </Grid>
 
@@ -205,7 +212,7 @@ const Profile = () => {
                   }}
                 >
                   <Box sx={{ display: 'flex'}}><LanguageIcon sx={{ mr: 1 }}/>Website</Box>
-                  <Box>https://John_doey.com</Box>
+                  <Box>{user.website  || '-'}</Box>
                 </Box>
                 <Divider />
 
@@ -218,7 +225,7 @@ const Profile = () => {
                   }}
                 >
                   <Box sx={{ display: 'flex'}}><GitHubIcon sx={{ mr: 1 }}/>Github</Box>
-                  <Box>John_doey</Box>
+                  <Box>{user.github  || '-'}</Box>
                 </Box>
                 <Divider />
 
@@ -231,7 +238,7 @@ const Profile = () => {
                   }}
                 >
                   <Box sx={{ display: 'flex'}}><LinkedInIcon sx={{ mr: 1 }}/>LinkedIn</Box>
-                  <Box>www.linkedin.com/john-doey</Box>
+                  <Box>{user.linkedin  || '-'}</Box>
                 </Box>
                 <Divider />
 
@@ -244,17 +251,12 @@ const Profile = () => {
                   }}
                 >
                   <Box sx={{ display: 'flex'}}><InstagramIcon sx={{ mr: 1 }}/>Instagram</Box>
-                  <Box>@John_doey</Box>
+                  <Box>{user.instagram  || '-'}</Box>
                 </Box>
 
               </Paper>
 
               
-          </Grid>
-
-          <Grid item xs>
-            
-
           </Grid>
       </Grid>
 

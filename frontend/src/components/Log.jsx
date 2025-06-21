@@ -14,7 +14,6 @@ const Log = () => {
 
   const navigate = useNavigate();
 
-
   const handleClickShowPassword = () => {
     setShowPassword((prev) => !prev);
   };
@@ -30,15 +29,15 @@ const Log = () => {
 
     axios.post('http://localhost:3000/login', { Email: email, Password: password })
       .then(res => {
-        console.log('Login success:', res.data);
-        // Navigate to home or dashboard on success
-        navigate('/events');
-      })
-      .catch(err => {
-        console.error('Login error:', err.response?.data || err.message);
-        setError(err.response?.data || 'Login failed');
-      });
+         console.log('Login success:', res.data);
 
+    localStorage.setItem('user', JSON.stringify(res.data));
+    navigate('/profile');
+  })
+  .catch(err => {
+    console.error('Login error:', err.response?.data || err.message);
+    setError(err.response?.data || 'Login failed');
+  });
 
   };
 

@@ -6,7 +6,11 @@ var peopleschema = mongoose.Schema({
         Email:String,
         Password:String,
         Address:String,
-        Gender:String
+        Gender:String,
+        Website: String,
+        GitHub: String,
+        LinkedIn: String,
+        Instagram: String
 });
 
 var peoplemodel = mongoose.model("Profile",peopleschema);
