@@ -10,7 +10,8 @@ var peopleschema = mongoose.Schema({
         Website: String,
         GitHub: String,
         LinkedIn: String,
-        Instagram: String
+        Instagram: String,
+        
 });
 
 var peoplemodel = mongoose.model("Profile",peopleschema);
