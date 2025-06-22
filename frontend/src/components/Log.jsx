@@ -32,7 +32,7 @@ const Log = () => {
          console.log('Login success:', res.data);
 
     localStorage.setItem('user', JSON.stringify(res.data));
-    navigate('/profile');
+    navigate('/events');
   })
   .catch(err => {
     console.error('Login error:', err.response?.data || err.message);

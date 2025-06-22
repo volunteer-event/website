@@ -49,8 +49,11 @@ const NavBar = () => {
             </Link>
 
             <Box sx={{ flexGrow: 1, display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
-                <Link to="/" style={{ textDecoration: 'none' }}>
+                <Link to="/home" style={{ textDecoration: 'none' }}>
                     <Button sx={{ color: 'white' }}>Home</Button>
+                </Link>
+                <Link to="/events" style={{ textDecoration: 'none' }}>
+                    <Button sx={{ color: 'white' }}>Events</Button>
                 </Link>
                 <Link to="/about" style={{ textDecoration: 'none' }}>
                     <Button sx={{ color: 'white' }}>About Us</Button>

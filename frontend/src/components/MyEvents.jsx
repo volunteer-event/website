@@ -36,6 +36,21 @@ const MyEvents = () => {
     { title: 'Volunteered Events', icon: <GroupsIcon />, navigate: "/Volunteered-Events" },
   ];
 
+  const delstud= (id) => {
+    console.log(id);
+    axios
+    .delete(`http://localhost:3000/${id}`)//concatinating id with localhost
+    .then((res) =>{
+      console.log(res);
+      alert(res.data)
+      window.location.reload()//auto reloading
+
+    })
+    .catch((err) =>{
+      console.log(err);
+    });
+  }
+
   return (
     <Box sx={{ display: 'flex' }}>
       {/* Drawer Sidebar */}
@@ -83,9 +98,10 @@ const MyEvents = () => {
               <TableRow>
                 <TableCell><strong>Event Name</strong></TableCell>
                 <TableCell><strong>Organiser</strong></TableCell>
-                <TableCell><strong>Date</strong></TableCell>
+                <TableCell><strong>Date&Time</strong></TableCell>
                 <TableCell><strong>Updates</strong></TableCell>
                 <TableCell><strong>Volunteer List</strong></TableCell>
+                <TableCell><strong>Delete</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -94,7 +110,18 @@ const MyEvents = () => {
                   <TableRow>
                     <TableCell>{row.EventName}</TableCell>
                     <TableCell>{row.OrganisorName}</TableCell>
-                    <TableCell>{row.Date}</TableCell>
+                    <TableCell>
+                      {new Date(row.StartDateTime).toLocaleString('en-IN', {
+                        weekday: 'short',
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                      })}
+                    </TableCell>
+
                     <TableCell>
                       <Button variant="contained">Update</Button>
                     </TableCell>
@@ -106,6 +133,9 @@ const MyEvents = () => {
                       >
                         View
                       </Button>
+                    </TableCell>
+                    <TableCell>
+                      <Button variant="contained" onClick={() => delstud(row._id)}>Delete</Button>
                     </TableCell>
                   </TableRow>
 
@@ -130,11 +160,7 @@ const MyEvents = () => {
                                   <TableRow key={i}>
                                     <TableCell>{volunteer.FullName}</TableCell>
                                     <TableCell>{volunteer.Email}</TableCell>
-                                    <TableCell>
-                                      <Button variant="contained" startIcon={<MailIcon />}>
-                                        Send Mail
-                                      </Button>
-                                    </TableCell>
+                                    
                                   </TableRow>
                                 ))
                               ) : (

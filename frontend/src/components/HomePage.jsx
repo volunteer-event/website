@@ -58,12 +58,10 @@ const HomePage = () => {
       <Typography
           variant='h5' 
           sx={{ flexGrow: 1,textAlign:'center' }}>
-          Whether you're hosting or helping — join the movement. Sign up as an organiser or volunteer today!
+          Whether you're hosting or helping — join the movement. 
       </Typography>
       
-      <Link href="login" underline="always" sx={{ fontSize: '1.5rem' }}>
-            Log in
-      </Link>
+      
     </div>
   )
 }
