@@ -9,7 +9,7 @@ var cors = require('cors');
 app.use(cors());
 var port=3000;
 
-app.post( '/',async(req,res) => {
+app.post( '/signup',async(req,res) => {
     try {
         await new profiles(req.body).save();
         res.send("Data added");
@@ -47,6 +47,7 @@ app.post('/login', async (req, res) => {
       email: user.Email,
       phone: user.PhoneNumber,
       address: user.Address,
+      gender: user.Gender,
       github: user.GitHub,
       linkedin: user.LinkedIn,
       instagram: user.Instagram,
@@ -71,6 +72,7 @@ app.post( '/reg',async(req,res) => {
 
 app.post('/api/events/:eventId', async (req, res) => {
   const { eventId } = req.params;
+  const { Email } = req.body;
 
   try {
     const event = await events.findById(eventId);
@@ -78,7 +80,7 @@ app.post('/api/events/:eventId', async (req, res) => {
 
     const volunteerData = {
       FullName: req.body.FullName,
-      Email: req.body.Email,
+      Email,
       PhoneNumber: req.body.PhoneNumber,
       Age: req.body.Age,
       EducationQualification: req.body.EducationQualification,

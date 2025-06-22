@@ -44,7 +44,7 @@ const Profile = () => {
           }
         }}
       >
-        Hello John!!
+        Hello {user.name}!!
       </Typography>
 
       <Box sx={{ display: 'flex' }}>
@@ -175,8 +175,23 @@ const Profile = () => {
                     fontSize: '1.15rem',
                   }}
                 >
-                  <Box sx={{ fontWeight: 'bold' }}>Password</Box>
-                  <Box>xxxxxxxxx</Box>
+                  <Box sx={{ fontWeight: 'bold' }}>Address</Box>
+                  <Box>{user.address}</Box>
+                </Box>
+
+                <Divider/>
+
+
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    fontSize: '1.15rem',
+                  }}
+                >
+                  <Box sx={{ fontWeight: 'bold' }}>Gender</Box>
+                  <Box>{user.gender}</Box>
                 </Box>
 
                 <Divider/>
