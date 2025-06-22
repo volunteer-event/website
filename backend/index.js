@@ -188,7 +188,14 @@ app.get('/myevents/:email', async (req, res) => {
   }
 });
 
-
+app.delete('/:id',async(req,res) =>{
+    try {
+        await events.findByIdAndDelete(req.params.id);
+        res.send("Data deleted")
+    } catch (error) {
+        res.send("error");
+    }
+})
 
 app.listen(port,()=>{
     console.log(`server is running on port ${port}`);
