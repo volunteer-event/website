@@ -16,6 +16,7 @@ var eventSchema = mongoose.Schema({
     VolunteerQualification:String,
     Poster:String,
     AdditionalInfo:String,
+    createdBy: { type: String, required: true },
     volunteers: [
     {
       FullName: String,
@@ -28,8 +29,10 @@ var eventSchema = mongoose.Schema({
       AptForRole: String,
       Skills: String,
       PriorExperience: Boolean,
-      BriefExperience: String
-      // Add all volunteer fields you expect
+      BriefExperience: String,
+      
+
+
     }
   ]
 });

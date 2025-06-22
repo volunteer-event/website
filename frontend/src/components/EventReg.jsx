@@ -30,7 +30,8 @@ const EventReg = () => {
             MaxParticipant:"",
             VolunteerQualification:"",
             Poster:"",
-            AdditionalInfo:""
+            AdditionalInfo:"",
+            createdBy:""
         });
 
         const inputHandler = (e) => {
@@ -45,6 +46,7 @@ const EventReg = () => {
             console.log(input);
         }, [input]);
 
+        
         const regHandler = () => {
             console.log("button clicked");
             axios

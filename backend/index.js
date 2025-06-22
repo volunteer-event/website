@@ -63,10 +63,15 @@ app.post('/login', async (req, res) => {
 
 app.post( '/reg',async(req,res) => {
     try {
-        await new events(req.body).save();
-        res.send("Data added")
+        const eventData = {
+      ...req.body,
+      createdBy: req.body.Email,  
+    };
+        
+        await new events(eventData).save();
+        res.send("event created");
     } catch (error) {
-        res.send("error");
+        res.status(500).send("Event creation failed");
     }
 });
 
@@ -134,6 +139,16 @@ app.post('/updateProfile', async (req, res) => {
   }
 });
 
+app.get('/myevents/:email', async (req, res) => {
+  try {
+    const userEmail = req.params.email;
+    const userEvents = await events.find({ createdBy: userEmail });
+    res.json(userEvents);
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    res.status(500).send("Error fetching your events");
+  }
+});
 
 
 
