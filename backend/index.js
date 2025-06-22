@@ -62,18 +62,56 @@ app.post('/login', async (req, res) => {
 
 
 app.post( '/reg',async(req,res) => {
-    try {
-        const eventData = {
-      ...req.body,
-      createdBy: req.body.Email,  
-    };
-        
-        await new events(eventData).save();
-        res.send("event created");
-    } catch (error) {
-        res.status(500).send("Event creation failed");
+   
+  try {
+    const { ContactInfo,
+            EventName, 
+            OrganisorName, 
+            StartDateTime, 
+            EndDateTime,
+            Category, 
+            EventDescription ,
+            Mode, 
+            HostingCity,
+            Deadline,
+            MaxVolunteer,
+            MaxParticipant,
+            VolunteerQualification,
+            Poster,
+            AdditionalInfo,
+            createdBy,} = req.body;
+
+    if (!ContactInfo) {
+      return res.status(400).send("Missing user email");
     }
+
+    const event = new events({
+      ContactInfo,
+      EventName,
+      OrganisorName,
+      StartDateTime,
+      EndDateTime,
+      Category,
+      EventDescription,
+      Mode,
+      HostingCity,
+      Deadline,
+      MaxVolunteer,
+      MaxParticipant,
+      VolunteerQualification,
+      Poster,
+      AdditionalInfo,
+      createdBy: ContactInfo
+    });
+
+    await event.save();
+    res.send("Event created");
+  } catch (error) {
+    console.error(" Error creating event:", error); // Log full error
+    res.status(500).send("Server error while creating event");
+  }
 });
+
 
 app.post('/api/events/:eventId', async (req, res) => {
   const { eventId } = req.params;

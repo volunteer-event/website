@@ -15,8 +15,9 @@ const EventReg = () => {
                 {value : 'Hybrid',label : 'Hybrid',},
         ];
 
+        const user = JSON.parse(localStorage.getItem('user'));
         var[input,setInput] = useState({
-            ContactInfo:"",
+            ContactInfo:user.email,
             EventName:"",
             OrganisorName:"",
             EventDescription:"",
